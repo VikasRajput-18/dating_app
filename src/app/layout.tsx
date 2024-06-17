@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Nunito_Sans as NunitoSans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import ThemeDataProvider from "@/components/theme-provider";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 
-const nunitoSans = NunitoSans({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunitoSans.className}>
+      <body className={roboto.className}>
         <NextThemeProvider
           attribute="class"
           defaultTheme="dark"
