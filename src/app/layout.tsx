@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Nunito_Sans as NunitoSans } from "next/font/google";
 import "./globals.css";
 import ThemeDataProvider from "@/components/theme-provider";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 
-const nunito_sans = Nunito_Sans({
+const nunitoSans = NunitoSans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunito_sans.className}>
+      <body className={nunitoSans.className}>
         <NextThemeProvider
           attribute="class"
           defaultTheme="dark"
