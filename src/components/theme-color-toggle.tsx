@@ -55,7 +55,7 @@ export function ThemeColorChanger() {
       >
         <SelectValue placeholder="Select Color" />
       </SelectTrigger>
-      <SelectContent className="border-muted bg-transparent backdrop-blur-sm font-semibold">
+      <SelectContent className="border-muted text-white bg-transparent backdrop-blur-sm font-semibold">
         {createSelectItems()}
       </SelectContent>
     </Select>
