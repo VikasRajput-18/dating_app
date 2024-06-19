@@ -1,22 +1,20 @@
-import Header from "@/components/header";
-import React from "react";
+import Image from "next/image";
 
-const Home = () => {
-  const random = Math.floor(Math.random() * 2) + 1;
+const Register = () => {
   return (
-    <section>
-      <div className="w-full relative">
-        <Header />
-        <video
-          src={`/assets/video${random}.mp4`}
-          className="absolute top-0 w-full h-screen object-cover"
-          autoPlay
-          muted
-          loop
+    <div>
+      <div className="relative">
+        <Image
+          src="/assets/bg1.jpg"
+          width={1000}
+          height={800}
+          className="h-screen w-full object-cover absolute top-0"
+          alt="couple background"
         />
-        <div
+      </div>
+      <div
           className="relative h-[100vh] flex items-center justify-center flex-col backdrop-blur-sm
-            bg-black/40 -top-[64px]"
+            bg-black/40"
         >
           <h1 className="text-center text-white text-3xl md:text-5xl font-extrabold px-2">
             Discover Your
@@ -33,9 +31,8 @@ const Home = () => {
             Join our community and start building meaningful connections today.
           </p>
         </div>
-      </div>
-    </section>
+    </div>
   );
 };
 
-export default Home;
+export default Register;

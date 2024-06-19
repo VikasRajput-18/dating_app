@@ -4,11 +4,12 @@ import { ThemeModeToggle } from "./theme-mode-toggle";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const Header = () => {
   return (
-    <header className="flex items-center z-10 relative">
-      <nav className="container mx-auto h-16 flex items-center justify-between">
+    <header className="flex items-center z-10 w-full relative">
+      <nav className="sm:container sm:mx-auto px-3 w-full h-16 flex items-center justify-between">
         <Link
           href="/"
           className={cn("text-3xl flex items-center gap-1 text-primary")}
@@ -22,6 +23,12 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center gap-1">
+          <Button
+            asChild
+            className="bg-gradient-to-tr from-rose-500 to-purple-500"
+          >
+            <Link href="/register">Create Profile</Link>
+          </Button>
           <ThemeColorChanger />
           <ThemeModeToggle />
         </div>
