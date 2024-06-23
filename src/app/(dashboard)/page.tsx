@@ -5,7 +5,7 @@ const Home = () => {
   const random = Math.floor(Math.random() * 2) + 1;
   return (
     <section>
-      <div className="w-full relative">
+      <div className="w-full h-screen relative overflow-hidden">
         <Header />
         <video
           src={`/assets/video${random}.mp4`}
