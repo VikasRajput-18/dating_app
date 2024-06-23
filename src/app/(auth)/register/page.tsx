@@ -8,13 +8,16 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { toast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+import { Loader2 } from "lucide-react";
 
 const Register = () => {
   const form = useForm<registerSchema>({
@@ -27,8 +30,41 @@ const Register = () => {
     },
   });
 
-  const onSubmit = (values: registerSchema) => {
-    console.log(values);
+  const { formState } = form;
+
+  const onSubmit = async (values: registerSchema) => {
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        }),
+      });
+      if (res.status === 400) {
+        toast({
+          variant: "destructive",
+          title: "This email is already registered",
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        });
+      }
+      if (res.status === 200) {
+        toast({
+          title: "User registered",
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      });
+    }
   };
 
   return (
@@ -116,9 +152,26 @@ const Register = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full mt-5">
-            Submit
+          <Button
+            disabled={formState.isSubmitting}
+            type="submit"
+            className="w-full mt-5"
+          >
+            {formState.isSubmitting ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              "Register"
+            )}
           </Button>
+          <div className="flex items-center gap-1">
+            <p className="text-neutral-50">Already have an account?</p>
+            <Link
+              href="/login"
+              className="text-primary underline font-extrabold"
+            >
+              Login
+            </Link>
+          </div>
         </form>
       </Form>
     </div>

@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import ThemeDataProvider from "@/components/theme-provider";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ThemeDataProvider>{children}</ThemeDataProvider>
+          <Toaster />
         </NextThemeProvider>
       </body>
     </html>
